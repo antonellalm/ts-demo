@@ -76,8 +76,49 @@ let tarea2: Tarea = {
 };
 
 //Podemos crear tipos propios- Type
-//
+
 type Producto = {
   precio: number;
   nombre: string;
+  anio: number;
 };
+
+let coche: Producto = {
+  nombre: "Audi",
+  precio: 45000,
+  anio: 2010,
+};
+
+//Condicionales
+
+//Operadores ternario
+console.log(
+  coche.anio < 2010
+    ? `Coche: ${coche.nombre} es viejo`
+    : `Coche: ${coche.nombre} es nuevo`
+);
+
+if (error) {
+  console.log("Hay un error");
+} else {
+  console.log("No hay un error");
+}
+
+if (coche.anio < 2010) {
+  console.log(`Coche: ${coche.nombre} es nuevo`);
+} else if (coche.anio === 2010) {
+  console.log(`Coche: ${coche.nombre} es viejo`);
+} else {
+  `Coche: ${coche.nombre} es nuevo`;
+}
+
+switch (tarea2.estado) {
+  case Estados.Completado:
+    console.log("la tarea esta completada");
+    break;
+  case Estados.Incompleto:
+    console.log("la tarea esta incompleta");
+    break;
+  default:
+    break;
+}
