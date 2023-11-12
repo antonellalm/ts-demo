@@ -6,6 +6,7 @@ console.log("Hola anto");
  */
 
 //Declaracíon de variables
+//tenemos la posibilidad de declarar las variables con var let const
 //BuiltIn Types: number,string,boolean,void,null y undefined
 //Template strign si
 //Asi se tipa: (tipo de dato)
@@ -74,6 +75,33 @@ let tarea2: Tarea = {
   estado: Estados.Pendiente,
   urgencia: 10,
 };
+//lo curioso es que no podemos hace destructurin cuando le asignamos el tipo al obeto de una
+// let { nombre, estado, urgencia } = tarea2;
+
+//Asignación múltiple de variables
+let miTarea = {
+  titulo: "mitarea",
+  estado: Estados.Completado,
+  urgencia: 1,
+};
+//AQUIpodemos hacer destructuring/asignacion de variables y tener las variables a disposicion
+let { titulo: string, estado, urgencia } = miTarea;
+
+//spread
+let listaCompraLunes: string[] = ["Leche", "PAN"];
+let listaCompraMartes: string[] = [...listaCompraLunes, "ajo,lechiga"];
+let listaCompraMiercoles: string[] = ["pescado", "carne"];
+let listaCompraporSemana = [...listaCompraLunes, ...listaCompraMiercoles];
+
+let estadoAPP = {
+  usuario: "admin",
+  sesion: 7,
+  jwt: "fdasddf",
+};
+let nuevoEstado = {
+  ...estadoAPP,
+  sesion: 8,
+};
 
 //Podemos crear tipos propios- Type
 
@@ -122,3 +150,56 @@ switch (tarea2.estado) {
   default:
     break;
 }
+
+//yo puedo intentar realizar algun tipo de operacion y si no sale bien capturar el error
+try {
+} catch (error) {}
+
+//Bucles
+let listaTareasNueva: Tarea[] = [
+  {
+    nombre: "Tarea1",
+    estado: Estados.Completado,
+    urgencia: 2,
+  },
+  {
+    nombre: "Tarea2",
+    estado: Estados.Pendiente,
+    urgencia: 0,
+  },
+  {
+    nombre: "Tarea3",
+    estado: Estados.Completado,
+    urgencia: 15,
+  },
+];
+//foreach
+listaTareasNueva.forEach((tarea: Tarea, index: number) => {
+  console.log(`${index} - ${tarea.nombre}`);
+});
+
+//for clasico
+for (let index = 0; index < listaTareasNueva.length; index++) {
+  const tarea = listaTareasNueva[index];
+  console.log(`${index} - ${tarea.nombre}`);
+}
+
+//forin - cadenas de texto, objetos
+
+//bucles while
+while (tarea2.estado !== Estados.Completado) {
+  tarea2.urgencia++;
+  if (tarea2.urgencia == 5) {
+    tarea2.estado = Estados.Completado;
+    break;
+  } else {
+    tarea2.urgencia++;
+  }
+}
+
+//Do While, anda cambiando el valor de la urgencia de la tarea incrementandola y le cambias el estado de la tarea a completado  mientras que la el estado de la tarea no este completado.
+
+do {
+  tarea2.urgencia++;
+  tarea2.estado = Estados.Completado;
+} while (tarea2.estado !== Estados.Completado);
