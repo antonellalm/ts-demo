@@ -21,10 +21,63 @@ console.log(`hay error: ${error}`); //Si yo lo ejecuto esto seria una representa
 
 //Instanciacion multiple de variables
 let a: string, b: boolean, c: number; //instancia 3 variables sin valor inicial.
+
 a = "typescript";
 b = true;
 c = 4;
 
 //Con esta syntaxis podemos generar LISTAS DE UN TIPO DE DATO O DIF TIPOS DE DATOS
+
+//lista de cadenas de texto
 let listaTareas: string[] = ["Tarea1", "Tarea 2"];
-let valores = [false, "Hola"];
+
+//Combinacion de tipos en listas.La lista puede tener valores de tipo string, number, boolean
+let valores: (string | number | boolean)[] = [false, "Hola", true, 10];
+
+//Definimos Enumerados
+
+enum Estados {
+  "Completado" = "c", //nombre del enumerado
+  "Incompleto" = "i",
+  "Pendiente" = "p",
+}
+//si no le agregamos un valor el valor de estado tarea cuando la intaciemos abajo sera 0 e ira incrementando su valor
+// enum Estados {
+//   "Completado",
+//   "Incompleto",
+//   "Pendiente",
+// }
+
+enum EstadoCarrera {
+  "Primero" = 1,
+  "Segundo",
+  "Tercero",
+}
+
+let estadoTarea: Estados = Estados.Completado;
+let puestoMaraton: EstadoCarrera = EstadoCarrera.Segundo;
+
+//TYPE - INTERFACE
+
+//La diferencia en tre interface y type es que tipo es para crear un tipo mas complejo
+
+//Interfaces, una interfaz en ts es una estructura abstracta que define un contrato en la apliacion. Especidica una forma o estructura que deberian seguir los OBJETO
+interface Tarea {
+  nombre: string;
+  estado: Estados;
+  urgencia: number;
+}
+//podemos crear variables que sigan la interface Tarea
+
+let tarea2: Tarea = {
+  nombre: "Tarea1",
+  estado: Estados.Pendiente,
+  urgencia: 10,
+};
+
+//Podemos crear tipos propios- Type
+//
+type Producto = {
+  precio: number;
+  nombre: string;
+};
