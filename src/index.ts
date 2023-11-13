@@ -231,4 +231,74 @@ const persona = "Martin";
 saludarPersona(persona);
 
 // esto asi no se puesde hacer:saludarPersona(2)
-//esto si se puede hacer:
+
+//estamos por defoult si no se pasa ningun argumento que ejecute por default anto
+function despedirPersona(nombre: string = "Anto") {
+  console.log(`ADIOS ${nombre}`);
+}
+
+despedirPersona(); //Anto
+despedirPersona("lucio"); //lucio
+
+/**
+ * Funcion que muestra un adiós por consola a una persona
+ * @param nombre (opcional) Nombre de la persona a despedir
+ */
+//hacer esto: nombre?: string es igual a hacer esto nombre: string | undefined
+function despedirOpcional(nombre?: string) {
+  if (nombre) {
+    console.log(console.log(`ADIOS ${nombre}`));
+  } else {
+    console.log(console.log(`ADIOS`));
+  }
+}
+
+despedirOpcional();
+despedirOpcional("anto");
+
+function variosParams(nombre: string, apellido?: string, edad: number = 18) {
+  if (apellido) {
+    console.log(`${nombre},${apellido},${edad}`);
+  } else {
+    console.log(`${nombre},${edad}`);
+  }
+}
+
+variosParams("anto"); // anto 18
+variosParams("anto", undefined, 30); //anto 30
+variosParams("anto", "rios"); //anto rios 18
+variosParams("anto", "rios", 30); //anto rios  30
+
+variosParams((nombre = "anto"), (apellido = "rios"));
+
+function ejemploVariosTipos(a: string | number) {
+  if (typeof a == "string") {
+    console.log("a es string");
+  } else {
+    console.log("a es number");
+  }
+}
+
+function ejmeploReturn(nombre: string, apellido: string): string {
+  return `${nombre},${apellido}`;
+}
+
+/**
+ *
+ * @param nombre es una lista de nombres
+ */
+function ejemploMultipleParam(...nombre: string[]) {
+  nombre.forEach((nombre) => {
+    console.log(nombre);
+  });
+}
+
+const lista = ["anto", "shuli", "gaston"];
+ejemploMultipleParam("anto", "juli", "alberto");
+ejemploMultipleParam(...lista);
+
+function ejemploMultipleLista(nombre: string[]) {
+  nombre.forEach((nombre) => {
+    console.log(nombre);
+  });
+}
