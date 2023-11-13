@@ -287,7 +287,8 @@ function ejmeploReturn(nombre: string, apellido: string): string {
  *
  * @param nombre es una lista de nombres
  */
-function ejemploMultipleParam(...nombre: string[]) {
+//le agregamos el tipo void porque la funcion no retorna nada y si retornara algo le tendriamos de poner el tipo de dato de lo que retorna explicitamente
+function ejemploMultipleParam(...nombre: string[]): void {
   nombre.forEach((nombre) => {
     console.log(nombre);
   });
@@ -302,3 +303,24 @@ function ejemploMultipleLista(nombre: string[]) {
     console.log(nombre);
   });
 }
+
+ejemploMultipleLista(lista);
+
+type Empleado = {
+  nombre: string;
+  apellidos: string;
+  edad: number;
+};
+
+let empleadoMartin: Empleado = {
+  nombre: "Martin",
+  apellidos: "Rios",
+  edad: 78,
+};
+
+const mostrarEmpleado = (empleado: Empleado): string =>
+  `${empleado.nombre}, ${empleado.apellidos}}`;
+
+mostrarEmpleado(empleadoMartin);
+
+//ASYNC FUNCTION
