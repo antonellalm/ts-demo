@@ -203,3 +203,17 @@ do {
   tarea2.urgencia++;
   tarea2.estado = Estados.Completado;
 } while (tarea2.estado !== Estados.Completado);
+
+//FUNCIONES
+//minusculas y camelcase
+//Son buenas prácticas que el nombre de la funcion sea bien explicito de lo que hace la funcion
+//asi de hace para dcumentar la funcion:
+/**
+ * Funcion en typescript
+ */
+function saludar() {
+  let nombre = "anto";
+  console.log(`Hola ${nombre}`);
+}
+
+saludar();
