@@ -217,3 +217,18 @@ function saludar() {
 }
 
 saludar();
+
+/**
+ *Funcion que muestra un saludo por consola a una persona
+ * @param nombre //nombre de la persona
+ */
+
+function saludarPersona(nombre: string) {
+  console.log(`Hola ${nombre}`);
+}
+
+const persona = "Martin";
+saludarPersona(persona);
+
+// esto asi no se puesde hacer:saludarPersona(2)
+//esto si se puede hacer:
