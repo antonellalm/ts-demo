@@ -1,3 +1,6 @@
+import { Worker } from "cluster";
+import { emitKeypressEvents } from "readline";
+
 console.log("Hola anto");
 
 /***
@@ -324,3 +327,42 @@ const mostrarEmpleado = (empleado: Empleado): string =>
 mostrarEmpleado(empleadoMartin);
 
 //ASYNC FUNCTION
+async function ejemploAsync(): Promise<string> {
+  await console.log("ya tenfo el resultado listo para usarlo");
+  return "completado";
+}
+
+//ejemplo funcion generadora
+//En TypeScript, para que una función pueda utilizar yield, debes marcarla como un generador. Para hacer esto, debes agregar un asterisco (*) después de la palabra clave function
+
+function* ejemploGenerator() {
+  let index = 0;
+  while (index < 5) {
+    yield index++;
+  }
+}
+
+let generadora = ejemploGenerator();
+
+console.log(generadora.next().value); // 0
+console.log(generadora.next().value); // 1
+console.log(generadora.next().value); // 2
+
+///worker y whatcher para gestionar el estado de la plaicacion, yo pongo a escuchar a una funcion a determinado evento y segun lo voy escuhcando pongo a trabjar a otras funciones de forma asincrona hasta que se terminen
+//eñwpeker va a definir y el watcher
+function* watcher(valor: number) {
+  yield valor;
+  yield* worker(valor);
+  yield valor + 4;
+}
+
+function* worker(valor: number) {
+  yield valor + 1;
+  yield valor + 2;
+  yield valor + 3;
+}
+
+let generatorSaga = watcher(0);
+console.log(generatorSaga.next().value); //0 watcher git a
+console.log(generatorSaga.next().value); // 1 worker
+console.log(generatorSaga.next().value); // 2worker
